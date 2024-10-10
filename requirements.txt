@@ -21,7 +21,7 @@ fastapi
 uvicorn
 jinja2
 python-multipart
-pymongo[srv]==3.6
 ipykernel
+evidently
 
--e .
+#-e .

@@ -5,14 +5,14 @@ import numpy as np
 import dill
 import pandas as pd
 
-from logger import logging
-from exception import CustomException
+from us_visa.logger import logging
+from us_visa.exception import CustomException
 
 def read_yaml_file(filename: str) -> dict:
     logging.info('Entered the read_yaml_file method')
     try:
         with open(filename, 'rb') as yaml_file:
-            yaml.safe_load(yaml_file)
+            return yaml.safe_load(yaml_file)
     except Exception as e:
         raise CustomException(e, sys)
 
