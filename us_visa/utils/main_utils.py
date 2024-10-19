@@ -59,7 +59,7 @@ def save_object(file_path:str, obj:object) -> None:
     try:
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, 'wb') as file:
-            dill.dump(file_path)
+            dill.dump(obj,file)
     except Exception as e:
         raise CustomException(e, sys)
 
