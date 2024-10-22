@@ -111,6 +111,8 @@ class DataTransformation:
             target_feature_df = target_feature_df.replace(
                     TargetValueMapping()._asdict()
                 )
+            
+            logging.info(f"target_feature_df = {target_feature_df}")
 
             return input_feature_df, target_feature_df
         except Exception as e:
@@ -136,8 +138,14 @@ class DataTransformation:
 
                 logging.info("Working on the training datase")
                 input_feature_train_df, target_feature_train_df = self.operations_on_datasets(train_df)
+                logging.info("Working on the test datase")
                 input_feature_test_df, target_feature_test_df = self.operations_on_datasets(test_df)
-                
+
+                logging.info("Debug")
+                logging.info(f"target_feature_train_df = {target_feature_train_df}")
+                logging.info(f"target_feature_test_df = {target_feature_test_df}")
+
+
                 logging.info('Applying preprocessor object on training dataset')
                 input_feature_train_arr = preprocessor.fit_transform(input_feature_train_df)
 
@@ -157,7 +165,7 @@ class DataTransformation:
                 ]
 
                 test_arr = np.c_[
-                                np.array(input_feature_test_df),
+                                np.array(input_feature_test_arr),
                                 np.array(target_feature_test_df)
                 ]
 

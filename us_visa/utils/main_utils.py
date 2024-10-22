@@ -50,7 +50,7 @@ def load_numpy_array_data(file_path:str) -> np.array:
     logging.info("Entered the load_numpy_array_data")
     try:
         with open(file_path, 'rb') as file:
-            return np.load(file)
+            return np.load(file, allow_pickle=True)
     except Exception as e:
         raise CustomException(e, sys)
 
